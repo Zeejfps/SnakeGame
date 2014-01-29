@@ -1,5 +1,7 @@
 package game.objects;
 
+import sun.org.mozilla.javascript.internal.ast.Block;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -11,170 +13,172 @@ import java.util.ArrayList;
  */
 public class Snake implements Renderable {
 
-    private final ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
-    private final int size;
-    private int speed;
-
     private enum Direction {
 
-        SOUTH(0, 1), NORTH(0, -1), EAST(1, 0), WEST(-1, 0);
+        NORTH(0, -1), SOUTH(0, 1), EAST(1, 0), WEST(-1, 0);
 
         public int x, y;
 
         Direction(int x, int y) {
-            this.x = x;
-            this.y = y;
+            this.x = x; this.y = y;
         }
 
     }
 
-    private Direction moveDir = Direction.SOUTH;
-    private boolean moved = false;
+    private final ArrayList<BodyBlock> bodyBlocks;
+    private final BodyBlock head;
 
     public Snake() {
 
-        size = 15;
-        speed = 3;
+        bodyBlocks = new ArrayList<BodyBlock>();
+        head = new BodyBlock(30, 30, 15, null);
+
+        bodyBlocks.add(head);
+        bodyBlocks.add(new BodyBlock(30, 30-15, 15, head));
 
     }
 
-    public void init(Rectangle playArea) {
+    public void move() {
 
-        int x = (playArea.width - size) / 2;
-        int y = (playArea.height - size) / 2;
-
-        rectangles.clear();
-        rectangles.add(new Rectangle(x, y, size, size));
-        rectangles.add(new Rectangle(x, y-size, size, size));
-
-    }
-
-    @Override
-    public void draw(Graphics g) {
-
-        Graphics2D g2d = (Graphics2D)g;
-        g2d.setColor(Color.GREEN);
-        for (Rectangle r : rectangles) {
-            g2d.fill(r);
-        }
-        g2d.setColor(Color.BLACK);
-        for (Rectangle r : rectangles) {
-            g2d.draw(r);
+        for (BodyBlock b : bodyBlocks) {
+            b.move(1);
         }
 
     }
 
     public void grow() {
 
-        Rectangle prev = rectangles.get(rectangles.size()-2);
-        Rectangle tail = rectangles.get(rectangles.size()-1);
+        BodyBlock prev = bodyBlocks.get(bodyBlocks.size()-2);
+        BodyBlock tail = bodyBlocks.get(bodyBlocks.size()-1);
         int dx = (prev.x - tail.x);
         int dy = (prev.y - tail.y);
 
-        rectangles.add(new Rectangle(tail.x - dx, tail.y - dy, size, size));
+        bodyBlocks.add(new BodyBlock(tail.x - dx, tail.y - dy, 15, tail));
+    }
+
+    @Override
+    public void draw(Graphics g) {
+
+        for (BodyBlock b : bodyBlocks) {
+            b.draw(g);
+        }
 
     }
 
     public void turn(int keyCode) {
 
-        if (moved) {
+        switch (keyCode) {
 
-            switch (keyCode) {
+            case KeyEvent.VK_LEFT:case KeyEvent.VK_A:
+                if (head.getDirection() != Direction.EAST){
+                    head.setDirection(Direction.WEST);
+                }
+                break;
 
-                case KeyEvent.VK_W:case KeyEvent.VK_UP:
-                    if (moveDir != Direction.SOUTH) {
-                        moveDir = Direction.NORTH;
-                    }
-                    break;
+            case KeyEvent.VK_RIGHT:case KeyEvent.VK_D:
+                if (head.getDirection() != Direction.WEST){
+                    head.setDirection(Direction.EAST);
+                }
+                break;
 
-                case KeyEvent.VK_S:case KeyEvent.VK_DOWN:
-                    if (moveDir != Direction.NORTH) {
-                        moveDir = Direction.SOUTH;
-                    }
-                    break;
+            case KeyEvent.VK_UP:case KeyEvent.VK_W:
+                if (head.getDirection() != Direction.SOUTH){
+                    head.setDirection(Direction.NORTH);
+                }
+                break;
 
-                case KeyEvent.VK_D:case KeyEvent.VK_RIGHT:
-                    if (moveDir != Direction.WEST) {
-                        moveDir = Direction.EAST;
-                    }
-                    break;
+            case KeyEvent.VK_DOWN:case KeyEvent.VK_S:
+                if (head.getDirection() != Direction.NORTH){
+                    head.setDirection(Direction.SOUTH);
+                }
+                break;
 
-                case KeyEvent.VK_A:case KeyEvent.VK_LEFT:
-                    if (moveDir != Direction.EAST) {
-                        moveDir = Direction.WEST;
-                    }
-                    break;
-
-                default:
-                    break;
-
-            }
-            moved = false;
+            default:
+                break;
 
         }
 
     }
 
-    public void move(float dt) {
+    private class BodyBlock implements Renderable{
 
-        for (int i = rectangles.size()-1; i > 0; i--) {
+        private Direction direction;
+        private final BodyBlock parent;
 
-            int dx = rectangles.get(i).x - rectangles.get(i-1).x;
-            int dy = rectangles.get(i).y - rectangles.get(i-1).y;
+        private int x, y, size;
+        private final Rectangle bounds;
 
-            int x;
-            int y;
-            if (dx < 0) {
-                x = rectangles.get(i).x +speed;
-            } else if (dx > 0){
-                x = rectangles.get(i).x -speed;
-            } else {
-                x = rectangles.get(i).x;
-            }
+        public BodyBlock(int x, int y, int size, BodyBlock parent) {
 
-            if (dy < 0) {
-                y = rectangles.get(i).y +speed;
-            } else if (dy > 0){
-                y = rectangles.get(i).y -speed;
-            } else {
-                y = rectangles.get(i).y;
-            }
+            this.x = x; this.y =y;
+            this.size = size;
 
-            rectangles.get(i).setLocation(x, y);
+            this.parent = parent;
+            bounds = new Rectangle(x, y, size, size);
+            direction = Direction.SOUTH;
+
         }
 
-        int x = rectangles.get(0).x + moveDir.x*speed;
-        int y = rectangles.get(0).y + moveDir.y*speed;
+        public void move(int amount) {
 
-        rectangles.get(0).setLocation(x, y);
+            x += amount*direction.x;
+            y += amount*direction.y;
 
-        moved = true;
+            bounds.setLocation(x, y);
 
-    }
+            if (parent != null) {
 
-    public Rectangle getHead() {
-        return rectangles.get(0);
-    }
+                int dx = parent.getX() - getX();
+                int dy = parent.getY() - getY();
+                if (dx == 0) {
 
-    public int getLength() {
-        return rectangles.size();
-    }
+                    if (dy < 0) {
+                        direction = Direction.NORTH;
+                    } else {
+                        direction = Direction.SOUTH;
+                    }
 
-    public ArrayList<Rectangle> getRectangles() {
-        return rectangles;
-    }
+                } else if (dy == 0) {
 
-    public boolean collided(Rectangle rect) {
+                    if (dx < 0) {
+                        direction = Direction.WEST;
+                    } else {
+                        direction = Direction.EAST;
+                    }
 
-        if (rectangles.get(0).intersects(rect)) {
-            return true;
+                }
+
+            }
+
         }
 
-        return false;
-    }
+        @Override
+        public void draw(Graphics g) {
 
-    public void increaseSpeed(int amount) {
-        speed += amount;
+            Graphics2D g2d = (Graphics2D)g;
+            g2d.setColor(Color.GREEN);
+            g2d.fill(bounds);
+            g2d.setColor(Color.BLACK);
+            g2d.draw(bounds);
+
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public void setDirection(Direction dir) {
+            this.direction = dir;
+        }
+
+        public Direction getDirection() {
+            return direction;
+        }
+
     }
 
 }

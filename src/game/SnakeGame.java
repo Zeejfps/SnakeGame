@@ -4,6 +4,7 @@ import engine.Clock;
 import engine.Game;
 import engine.GameContainer;
 import game.objects.Apple;
+import game.objects.Grid;
 import game.objects.Renderable;
 import game.objects.Snake;
 import game.screens.EndScreen;
@@ -21,21 +22,21 @@ import java.awt.event.KeyListener;
  * Date: 1/25/14
  * Time: 9:03 PM
  */
-public class SnakeGame extends Game {
+public class SnakeGame extends Game implements KeyListener{
 
     public static final String TITLE = "Snake Game v1.0";
     public static final int WIDTH = 640;
     public static final int HEIGHT = 480;
 
-    private final InputHandler ih = new InputHandler();
     private final GameContainer gc;
 
     private final StartScreen startScreen;
     private final GameScreen gameScreen;
     private final EndScreen endScreen;
 
-    private final Snake snake;
-    private final Apple apple;
+    private Grid grid;
+    private Snake snake;
+    private Apple apple;
 
     private boolean gameOver = false;
     private boolean paused = false;
@@ -56,10 +57,6 @@ public class SnakeGame extends Game {
         endScreen = new EndScreen(this);
         addScreen(endScreen);
 
-        snake = new Snake();
-        apple = new Apple();
-
-        addKeyListener(ih);
         setScreen(startScreen);
 
         gc = new GameContainer(this);
@@ -71,8 +68,10 @@ public class SnakeGame extends Game {
 
         setScreen(gameScreen);
 
-        snake.init(gameScreen.getBounds());
-        apple.init(gameScreen.getBounds(), snake);
+        Canvas drawingCanvas = gameScreen.getDrawingCanvas();
+        grid = new Grid(drawingCanvas.getX(), drawingCanvas.getY(), drawingCanvas.getWidth(), drawingCanvas.getHeight(), 15);
+        snake = new Snake();
+        apple = new Apple();
 
     }
 
@@ -82,22 +81,7 @@ public class SnakeGame extends Game {
         if (!paused && !gameOver) {
 
             gameClock.tick();
-            snake.move(gameClock.getDeltaTime());
-            if (snake.collided(apple)) {
-
-                System.out.println("collided");
-                apple.respawn(snake);
-                snake.grow();
-                score++;
-
-                if (snake.getLength() % 5 == 0) {
-                    snake.increaseSpeed(1);
-                }
-
-            }
-           /* if (snake.collided(gameScreen.getWalls())) {
-                gameOver = true;
-            }*/
+            snake.move();
 
         } else if (gameOver) {
 
@@ -112,6 +96,7 @@ public class SnakeGame extends Game {
 
         gameScreen.clear();
 
+        gameScreen.render(grid);
         gameScreen.render(apple);
         gameScreen.render(snake);
 
@@ -130,26 +115,6 @@ public class SnakeGame extends Game {
         return paused;
     }
 
-    public KeyListener getInputHandler() {
-        return ih;
-    }
-
-    private class InputHandler extends KeyAdapter {
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-
-            System.out.println("pressed");
-            snake.turn(e.getKeyCode());
-
-            if (e.getKeyCode() == KeyEvent.VK_C) {
-                snake.grow();
-            }
-
-        }
-
-    }
-
     public void pause() {
         paused = true;
     }
@@ -157,6 +122,23 @@ public class SnakeGame extends Game {
     public void resume() {
         paused = false;
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {}
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+        snake.turn(e.getKeyCode());
+
+        if (e.getKeyCode() == KeyEvent.VK_C) {
+            snake.grow();
+        }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
 
 }
 

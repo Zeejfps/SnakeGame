@@ -53,7 +53,7 @@ public class Apple extends Rectangle implements Renderable {
         int y = RAND.nextInt(playArea.height) + playArea.y;
 
         setLocation(x, y);
-
+/*
         for (Rectangle r : snake.getRectangles()) {
 
             if (r.intersects(this)) {
@@ -61,7 +61,7 @@ public class Apple extends Rectangle implements Renderable {
             }
 
         }
-
+*/
     }
 
     @Override

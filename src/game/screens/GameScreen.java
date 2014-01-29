@@ -37,7 +37,7 @@ public class GameScreen extends JPanel {
         pauseMenu = new PauseMenu();
 
         addKeyListener(ih);
-        addKeyListener(game.getInputHandler());
+        addKeyListener(game);
         setFocusable(true);
         setBackground(Color.BLACK);
 
@@ -85,6 +85,10 @@ public class GameScreen extends JPanel {
         }
         bs.show();
 
+    }
+
+    public Canvas getDrawingCanvas() {
+        return drawingCanvas;
     }
 
     @Override
