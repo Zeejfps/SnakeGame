@@ -35,7 +35,7 @@ public class Snake implements Renderable {
         this.grid = grid;
 
         bodyBlocks = new ArrayList<BodyBlock>();
-        head = new BodyBlock(30, 30, 15, null);
+        head = new BodyBlock(grid.getPoints().length, 30, 15, null);
 
         bodyBlocks.add(head);
         bodyBlocks.add(new BodyBlock(30, 30-15, 15, head));

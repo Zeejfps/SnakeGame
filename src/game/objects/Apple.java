@@ -42,10 +42,10 @@ public class Apple extends Rectangle implements Renderable {
 
     public void respawn() {
 
-        int y = RAND.nextInt(grid.getPoints().length);
-        int x = RAND.nextInt(grid.getPoints()[y].length);
+        int x = RAND.nextInt(grid.getPoints().length);
+        int y = RAND.nextInt(grid.getPoints()[x].length);
 
-        setLocation(x*Grid.SQUARE_SIZE + grid.getX(), y*Grid.SQUARE_SIZE+grid.getY());
+        setLocation(grid.getPoints()[x][y]);
     }
 
     @Override
