@@ -45,8 +45,8 @@ public abstract class Game extends JPanel {
 
         if (!running) {
 
-            onStart();
             running = true;
+            onStart();
             gameLoop.start();
 
         }
@@ -58,8 +58,8 @@ public abstract class Game extends JPanel {
         if (running) {
 
             running = false;
-            gameLoop.stop();
             onEnd();
+            gameLoop.stop();
 
         }
 

@@ -5,15 +5,12 @@ import engine.Game;
 import engine.GameContainer;
 import game.objects.Apple;
 import game.objects.Grid;
-import game.objects.Renderable;
-import game.objects.Snake;
+import game.objects.snake.Snake;
 import game.screens.EndScreen;
 import game.screens.GameScreen;
 import game.screens.StartScreen;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -46,7 +43,7 @@ public class SnakeGame extends Game implements KeyListener{
 
     public SnakeGame() {
 
-        super(WIDTH, HEIGHT, TITLE, 60, 3);
+        super(WIDTH, HEIGHT, TITLE, 60, 30);
 
         startScreen = new StartScreen(this);
         addScreen(startScreen);
@@ -69,7 +66,7 @@ public class SnakeGame extends Game implements KeyListener{
         setScreen(gameScreen);
 
         Canvas drawingCanvas = gameScreen.getDrawingCanvas();
-        grid = new Grid(drawingCanvas);
+        grid = new Grid(drawingCanvas, 20);
         snake = new Snake(grid);
         apple = new Apple(grid);
 
@@ -81,9 +78,9 @@ public class SnakeGame extends Game implements KeyListener{
         if (!paused && !gameOver) {
 
             gameClock.tick();
-            snake.move();
+            snake.move(gameClock.getDeltaTime());
             if (snake.outOfBounds()) {
-                stop();
+                gameOver = true;
             }
 
         } else if (gameOver) {
@@ -110,6 +107,7 @@ public class SnakeGame extends Game implements KeyListener{
     @Override
     public void onEnd() {
 
+        System.out.println("OnEnd");
         setScreen(endScreen);
 
     }

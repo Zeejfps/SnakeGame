@@ -7,29 +7,29 @@ import java.awt.*;
  */
 public class Grid implements Renderable {
 
-    public static final int SQUARE_SIZE = 20;
-
+    private final int squareSize;
     private final int x, y;
     private final int width, height;
 
     private final Point[][] gridPoints;
 
-    public Grid(Canvas drawingCanvas) {
+    public Grid(Canvas drawingCanvas, int squareSize) {
 
-        gridPoints = new Point[drawingCanvas.getWidth()/SQUARE_SIZE][drawingCanvas.getHeight()/SQUARE_SIZE];
+        this.squareSize = squareSize;
+        gridPoints = new Point[drawingCanvas.getWidth()/ squareSize][drawingCanvas.getHeight()/ squareSize];
         for (int i = 0; i < gridPoints.length; i++) {
 
             for (int j = 0; j < gridPoints[i].length; j++) {
 
-                gridPoints[i][j] = new Point(i*SQUARE_SIZE, j*SQUARE_SIZE);
+                gridPoints[i][j] = new Point(i* squareSize, j* squareSize);
 
             }
 
         }
 
-        width = gridPoints.length * SQUARE_SIZE;
+        width = gridPoints.length * squareSize;
         System.out.println(width);
-        height = gridPoints[0].length * SQUARE_SIZE;
+        height = gridPoints[0].length * squareSize;
         System.out.println(height);
 
         x = (drawingCanvas.getWidth() - width)/2;
@@ -45,7 +45,7 @@ public class Grid implements Renderable {
 
             for (int j = 0; j < gridPoints[i].length; j++) {
 
-                g.drawRect(gridPoints[i][j].x, gridPoints[i][j].y, SQUARE_SIZE, SQUARE_SIZE);
+                g.drawRect(gridPoints[i][j].x, gridPoints[i][j].y, squareSize, squareSize);
 
             }
 
@@ -71,6 +71,10 @@ public class Grid implements Renderable {
 
     public Point[][] getPoints() {
         return gridPoints;
+    }
+
+    public int getSquareSize() {
+        return squareSize;
     }
 
 }

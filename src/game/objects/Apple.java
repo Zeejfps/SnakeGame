@@ -34,8 +34,8 @@ public class Apple extends Rectangle implements Renderable {
 
         this.grid = grid;
 
-        width = Grid.SQUARE_SIZE;
-        height = Grid.SQUARE_SIZE;
+        width = grid.getSquareSize();
+        height = grid.getSquareSize();
 
         respawn();
     }
@@ -52,7 +52,7 @@ public class Apple extends Rectangle implements Renderable {
     public void draw(Graphics g) {
 
         Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(APPLE_IMAGE, x, y, Grid.SQUARE_SIZE, Grid.SQUARE_SIZE, null);
+        g2d.drawImage(APPLE_IMAGE, x, y, width, height, null);
         g2d.draw(this);
 
     }

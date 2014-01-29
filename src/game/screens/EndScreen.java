@@ -3,6 +3,7 @@ package game.screens;
 import game.SnakeGame;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * User: Zeejfps
@@ -16,6 +17,8 @@ public class EndScreen extends JPanel {
     public  EndScreen(SnakeGame game) {
 
         this.game = game;
+        setName("EndScreen");
+        setBackground(Color.BLACK);
 
     }
 
