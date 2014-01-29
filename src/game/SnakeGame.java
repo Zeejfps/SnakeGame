@@ -46,7 +46,7 @@ public class SnakeGame extends Game implements KeyListener{
 
     public SnakeGame() {
 
-        super(WIDTH, HEIGHT, TITLE, 60, 30);
+        super(WIDTH, HEIGHT, TITLE, 60, 3);
 
         startScreen = new StartScreen(this);
         addScreen(startScreen);
@@ -69,9 +69,9 @@ public class SnakeGame extends Game implements KeyListener{
         setScreen(gameScreen);
 
         Canvas drawingCanvas = gameScreen.getDrawingCanvas();
-        grid = new Grid(drawingCanvas.getX(), drawingCanvas.getY(), drawingCanvas.getWidth(), drawingCanvas.getHeight(), 15);
-        snake = new Snake();
-        apple = new Apple();
+        grid = new Grid(drawingCanvas);
+        snake = new Snake(grid);
+        apple = new Apple(grid);
 
     }
 
@@ -82,6 +82,9 @@ public class SnakeGame extends Game implements KeyListener{
 
             gameClock.tick();
             snake.move();
+            if (snake.outOfBounds()) {
+                stop();
+            }
 
         } else if (gameOver) {
 
@@ -133,6 +136,10 @@ public class SnakeGame extends Game implements KeyListener{
 
         if (e.getKeyCode() == KeyEvent.VK_C) {
             snake.grow();
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_X) {
+            apple.respawn();
         }
 
     }

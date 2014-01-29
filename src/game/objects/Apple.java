@@ -28,47 +28,31 @@ public class Apple extends Rectangle implements Renderable {
 
     }
 
-    private final int size;
-    private Rectangle playArea;
+    private final Grid grid;
 
-    public Apple() {
+    public Apple(Grid grid) {
 
-        size = 15;
+        this.grid = grid;
 
-        width = size;
-        height = size;
+        width = Grid.SQUARE_SIZE;
+        height = Grid.SQUARE_SIZE;
 
+        respawn();
     }
 
-    public void init(Rectangle playArea, Snake snake) {
+    public void respawn() {
 
-        this.playArea = playArea;
-        respawn(snake);
+        int y = RAND.nextInt(grid.getPoints().length);
+        int x = RAND.nextInt(grid.getPoints()[y].length);
 
-    }
-
-    public void respawn(Snake snake) {
-
-        int x = RAND.nextInt(playArea.width) + playArea.x;
-        int y = RAND.nextInt(playArea.height) + playArea.y;
-
-        setLocation(x, y);
-/*
-        for (Rectangle r : snake.getRectangles()) {
-
-            if (r.intersects(this)) {
-                respawn(snake);
-            }
-
-        }
-*/
+        setLocation(x*Grid.SQUARE_SIZE + grid.getX(), y*Grid.SQUARE_SIZE+grid.getY());
     }
 
     @Override
     public void draw(Graphics g) {
 
         Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(APPLE_IMAGE, x, y, size, size, null);
+        g2d.drawImage(APPLE_IMAGE, x, y, Grid.SQUARE_SIZE, Grid.SQUARE_SIZE, null);
         g2d.draw(this);
 
     }

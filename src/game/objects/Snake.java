@@ -25,10 +25,14 @@ public class Snake implements Renderable {
 
     }
 
+    private final Grid grid;
+
     private final ArrayList<BodyBlock> bodyBlocks;
     private final BodyBlock head;
 
-    public Snake() {
+    public Snake(Grid grid) {
+
+        this.grid = grid;
 
         bodyBlocks = new ArrayList<BodyBlock>();
         head = new BodyBlock(30, 30, 15, null);
@@ -100,18 +104,31 @@ public class Snake implements Renderable {
 
     }
 
+    public boolean outOfBounds() {
+
+        if (head.getX() < grid.getX() || head.getX() + head.size > grid.getX() + grid.getWidth()) {
+            return true;
+        } else if (head.getY() <grid.getY() || head.getY() + head.size > grid.getY() + grid.getHeight()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     private class BodyBlock implements Renderable{
+
+        public final int size = 15;
 
         private Direction direction;
         private final BodyBlock parent;
 
-        private int x, y, size;
+        private int x, y;
         private final Rectangle bounds;
 
         public BodyBlock(int x, int y, int size, BodyBlock parent) {
 
             this.x = x; this.y =y;
-            this.size = size;
 
             this.parent = parent;
             bounds = new Rectangle(x, y, size, size);
@@ -121,35 +138,10 @@ public class Snake implements Renderable {
 
         public void move(int amount) {
 
-            x += amount*direction.x;
-            y += amount*direction.y;
+            x += direction.x*Grid.SQUARE_SIZE;
+            y += direction.y*Grid.SQUARE_SIZE;
 
             bounds.setLocation(x, y);
-
-            if (parent != null) {
-
-                int dx = parent.getX() - getX();
-                int dy = parent.getY() - getY();
-                if (dx == 0) {
-
-                    if (dy < 0) {
-                        direction = Direction.NORTH;
-                    } else {
-                        direction = Direction.SOUTH;
-                    }
-
-                } else if (dy == 0) {
-
-                    if (dx < 0) {
-                        direction = Direction.WEST;
-                    } else {
-                        direction = Direction.EAST;
-                    }
-
-                }
-
-            }
-
         }
 
         @Override

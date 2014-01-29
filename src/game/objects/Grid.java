@@ -7,19 +7,21 @@ import java.awt.*;
  */
 public class Grid implements Renderable {
 
+    public static final int SQUARE_SIZE = 20;
+
     private final int x, y;
     private final int width, height;
-    private final int size;
 
     private final int[][] gridPoints;
 
-    public Grid(int x, int y, int width, int height, int size) {
+    public Grid(Canvas drawingCanvas) {
 
-        this.x = x;         this.y = y;
-        this.width = width; this.height = height;
-        this.size = size;
+        gridPoints = new int[drawingCanvas.getHeight()/SQUARE_SIZE][drawingCanvas.getWidth()/SQUARE_SIZE];
+        height = gridPoints.length * SQUARE_SIZE;
+        width = gridPoints[0].length * SQUARE_SIZE;
 
-        gridPoints = new int[height/size][width/10];
+        x = (drawingCanvas.getWidth() - width)/2;
+        y = (drawingCanvas.getHeight() - height)/2;
 
     }
 
@@ -31,12 +33,32 @@ public class Grid implements Renderable {
 
             for (int j = 0; j < gridPoints[i].length; j++) {
 
-                g.drawRect(j*size+x, i*size+y, size, size);
+                g.drawRect(j*SQUARE_SIZE+x, i*SQUARE_SIZE+y, SQUARE_SIZE, SQUARE_SIZE);
 
             }
 
         }
 
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int[][] getPoints() {
+        return gridPoints;
     }
 
 }
