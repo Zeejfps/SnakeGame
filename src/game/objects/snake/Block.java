@@ -15,10 +15,15 @@ class Block implements Renderable {
     private final int size;
     private final Rectangle bounds;
 
+    private boolean moved;
+    private Direction direction;
+
     public Block(Point pos, int size) {
         this.pos = pos;
         this.size = size;
         bounds = new Rectangle(pos.x, pos.y, size, size);
+        direction = Direction.SOUTH;
+        moved = false;
     }
 
     @Override
@@ -30,6 +35,26 @@ class Block implements Renderable {
         g2d.setColor(Color.BLACK);
         g2d.draw(bounds);
 
+    }
+
+    float c = 0;
+    public void move(float dt, int amount) {
+
+
+        pos.x += 1 * direction.x;
+        //System.out.println(pos.x);
+        pos.y += 1 * direction.y;
+
+        bounds.setLocation(pos.x, pos.y);
+
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 
 }

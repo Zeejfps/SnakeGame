@@ -1,5 +1,6 @@
 package game.screens;
 
+import engine.gfx.Screen;
 import game.SnakeGame;
 
 import javax.imageio.ImageIO;
@@ -15,11 +16,12 @@ import java.io.IOException;
  * Date: 1/25/14
  * Time: 9:40 PM
  */
-public class StartScreen extends JPanel {
+public class StartScreen extends Screen {
 
     public StartScreen(final SnakeGame game) {
 
-        super(new BorderLayout());
+        super(game, "StartScreen");
+        setLayout(new BorderLayout());
         setBackground(Color.BLACK);
 
         final JPanel mainWrapper = new JPanel(new CardLayout());

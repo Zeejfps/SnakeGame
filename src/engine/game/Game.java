@@ -1,4 +1,8 @@
-package engine;
+package engine.game;
+
+import engine.gfx.Screen;
+import engine.util.Keyboard;
+import engine.util.Mouse;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,12 +21,15 @@ public abstract class Game extends JPanel {
     private final int height;
     private final String title;
 
+    private final GameWindow gameWindow;
     private final GameLoop gameLoop;
 
     protected int fps, ups;
+    protected Keyboard keyboard;
+    protected Mouse mouse;
 
     private final JPanel screenContainer = new JPanel(new CardLayout());
-    private final ArrayList<JPanel> screens = new ArrayList<JPanel>();
+    private final ArrayList<Screen> screens = new ArrayList<Screen>();
     private JPanel currentScreen;
 
     public Game(int width, int height, String title, int fps, int ups) {
@@ -37,8 +44,13 @@ public abstract class Game extends JPanel {
         this.fps = fps;
         this.ups = ups;
 
+        this.keyboard = new Keyboard();
+        this.mouse = new Mouse();
+
         gameLoop = new GameLoop(this);
         add(screenContainer, BorderLayout.CENTER);
+
+        gameWindow = new GameWindow(this);
     }
 
     public void start() {
@@ -86,7 +98,7 @@ public abstract class Game extends JPanel {
 
     public abstract void onEnd();
 
-    public void setScreen(JPanel screen) {
+    public void setScreen(Screen screen) {
 
         if (!screens.contains(screen)) {
             System.err.println("This screen was not added!");
@@ -94,12 +106,15 @@ public abstract class Game extends JPanel {
         }
 
         currentScreen = screen;
+        currentScreen.addKeyListener(keyboard);
+        currentScreen.addMouseListener(mouse);
+        currentScreen.addMouseMotionListener(mouse);
         ((CardLayout)screenContainer.getLayout()).show(screenContainer, currentScreen.getName());
         currentScreen.requestFocusInWindow();
 
     }
 
-    public void addScreen(JPanel screen) {
+    public void addScreen(Screen screen) {
         screens.add(screen);
         screenContainer.add(screen, screen.getName());
     }

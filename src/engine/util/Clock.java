@@ -1,4 +1,4 @@
-package engine;
+package engine.util;
 
 /*
  * Created by Zeejfps on 12/18/13.
@@ -47,7 +47,7 @@ public class Clock {
             runTime += (long)(timePerTick * timeScale);
         }
 
-        deltaTime = ((float)(runTime - lastRunTime) / (float) NS_PER_MS) * Math.abs(timeScale);
+        deltaTime = ((float)(runTime - lastRunTime) / (float) NS_PER_SEC) * Math.abs(timeScale);
         lastRunTime = runTime;
         lastTime = currTime;
 

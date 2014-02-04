@@ -1,5 +1,6 @@
 package game.screens;
 
+import engine.gfx.Screen;
 import game.SnakeGame;
 
 import javax.swing.*;
@@ -10,13 +11,12 @@ import java.awt.*;
  * Date: 1/25/14
  * Time: 10:15 PM
  */
-public class EndScreen extends JPanel {
-
-    private final SnakeGame game;
+public class EndScreen extends Screen {
 
     public  EndScreen(SnakeGame game) {
 
-        this.game = game;
+        super(game, "EndScreen");
+
         setName("EndScreen");
         setBackground(Color.BLACK);
 

@@ -1,4 +1,4 @@
-package engine;
+package engine.game;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -9,15 +9,16 @@ import java.awt.event.WindowEvent;
  * Date: 1/25/14
  * Time: 9:07 PM
  */
-public class GameContainer extends WindowAdapter {
+public class GameWindow extends WindowAdapter {
 
     private final Game game;
     private JFrame window;
 
-    public GameContainer(Game game) {
+    public GameWindow(Game game) {
 
         this.game = game;
 
+        createAndShowWindow();
     }
 
     private void createAndShowWindow() {
@@ -30,19 +31,6 @@ public class GameContainer extends WindowAdapter {
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
-    }
-
-    public void show() {
-
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-
-                createAndShowWindow();
-
-            }
-        });
 
     }
 

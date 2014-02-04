@@ -1,5 +1,6 @@
 package game.screens;
 
+import engine.gfx.Screen;
 import game.objects.Renderable;
 import game.SnakeGame;
 
@@ -15,107 +16,45 @@ import java.awt.image.BufferedImage;
  * Date: 1/25/14
  * Time: 10:05 PM
  */
-public class GameScreen extends JPanel {
+public class GameScreen extends Screen {
 
     private final SnakeGame game;
-
-    private final Canvas drawingCanvas;
     private final PauseMenu pauseMenu;
 
-    private final InputHandler ih = new InputHandler();
     private BufferedImage buffer;
 
     public GameScreen(SnakeGame game) {
 
-        super(new BorderLayout());
-        this.game = game;
-        setName("GameScreen");
+        super(game, "GameScreen");
 
-        drawingCanvas = new Canvas();
-        drawingCanvas.setFocusable(true);
+        this.game = game;
+        setLayout(new BorderLayout());
+        setName("gameScreen");
 
         pauseMenu = new PauseMenu();
 
-        addKeyListener(ih);
-        addKeyListener(game);
         setFocusable(true);
         setBackground(Color.BLACK);
 
-        add(drawingCanvas, BorderLayout.CENTER);
+        game.addScreen(this);
     }
 
     public void clear() {
 
-        if (buffer == null) {
-            GraphicsConfiguration gf = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-            buffer = gf.createCompatibleImage(drawingCanvas.getWidth(), drawingCanvas.getHeight());
-        }
-        Graphics g = buffer.getGraphics();
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, getWidth(), getHeight());
-        g.dispose();
     }
 
     public void render(Renderable obj) {
 
-        Graphics g = buffer.getGraphics();
-        obj.draw(g);
-        g.dispose();
     }
 
     public void update() {
 
-        if (game.isPaused()) {
 
-            Graphics g = buffer.getGraphics();
-            pauseMenu.draw(g);
-            g.dispose();
-
-        }
-
-        BufferStrategy bs = drawingCanvas.getBufferStrategy();
-        if (bs == null) {
-            drawingCanvas.createBufferStrategy(3);
-            return;
-        }
-        Graphics g = bs.getDrawGraphics();
-        if (g != null) {
-            g.drawImage(buffer, 0, 0, null);
-            g.dispose();
-        }
-        bs.show();
-
-    }
-
-    public Canvas getDrawingCanvas() {
-        return drawingCanvas;
     }
 
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(game.getWidth(), game.getHeight());
-    }
-
-    private class InputHandler extends KeyAdapter {
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-
-            int keyCode = e.getKeyCode();
-            if (keyCode == KeyEvent.VK_ESCAPE || keyCode == KeyEvent.VK_P) {
-
-                if (game.isPaused()) {
-                    game.resume();
-                } else {
-                    game.pause();
-                }
-
-            } else if (keyCode == KeyEvent.VK_E && game.isPaused()) {
-                System.exit(0);
-            }
-
-        }
-
     }
 
     private class PauseMenu {
@@ -135,17 +74,17 @@ public class GameScreen extends JPanel {
             int y;
 
             g.setFont(mainFont);
-            x = (drawingCanvas.getWidth() - mainFm.stringWidth(strings[0]))/2 + drawingCanvas.getX();
-            y = (drawingCanvas.getHeight())/2 + drawingCanvas.getX() - mainFm.getHeight();
+            x = (getWidth() - mainFm.stringWidth(strings[0]))/2 + getX();
+            y = (getHeight())/2 + getX() - mainFm.getHeight();
             g.drawString(strings[0], x, y);
 
             g.setFont(innerFont);
-            x = (drawingCanvas.getWidth() - innerFm.stringWidth(strings[1]))/2 + drawingCanvas.getX();
-            y = (drawingCanvas.getHeight())/2 + drawingCanvas.getX();
+            x = (getWidth() - innerFm.stringWidth(strings[1]))/2 + getX();
+            y = (getHeight())/2 + getX();
             g.drawString(strings[1], x, y);
 
-            x = (drawingCanvas.getWidth() - innerFm.stringWidth(strings[2]))/2 + drawingCanvas.getX();
-            y = (drawingCanvas.getHeight())/2 + drawingCanvas.getX() + innerFm.getHeight();
+            x = (getWidth() - innerFm.stringWidth(strings[2]))/2 + getX();
+            y = (getHeight())/2 + getX() + innerFm.getHeight();
             g.drawString(strings[2], x, y);
 
         }

@@ -1,4 +1,6 @@
-package engine;
+package engine.game;
+
+import engine.util.Clock;
 
 /**
  * User: Zeejfps
@@ -60,6 +62,7 @@ public class GameLoop implements Runnable {
             skippedFrames = 0;
             while (runTime >= nsPerTick && skippedFrames <= maxSkippedFrames) {
 
+                game.keyboard.poll();
                 game.update();
                 runTime -= nsPerTick;
                 skippedFrames ++;
