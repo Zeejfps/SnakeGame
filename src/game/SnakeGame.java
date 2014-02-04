@@ -1,11 +1,8 @@
 package game;
 
-import engine.game.GameWindow;
 import engine.util.Clock;
 import engine.game.Game;
 import game.objects.Apple;
-import game.objects.Grid;
-import game.objects.snake.Snake;
 import game.screens.EndScreen;
 import game.screens.GameScreen;
 import game.screens.StartScreen;
@@ -20,15 +17,14 @@ import java.awt.event.KeyEvent;
 public class SnakeGame extends Game {
 
     public static final String TITLE = "Snake Game v1.0";
-    public static final int WIDTH = 640;
-    public static final int HEIGHT = 480;
+    public static final int WIDTH = 320;
+    public static final int HEIGHT = 240;
+    public static final int SCALE = 2;
 
     private final StartScreen startScreen;
     private final GameScreen gameScreen;
     private final EndScreen endScreen;
 
-    private Grid grid;
-    private Snake snake;
     private Apple apple;
 
     private boolean gameOver = false;
@@ -39,7 +35,7 @@ public class SnakeGame extends Game {
 
     public SnakeGame() {
 
-        super(WIDTH, HEIGHT, TITLE, 99999, 30);
+        super(WIDTH, HEIGHT, SCALE, TITLE, 99999, 30);
 
         startScreen = new StartScreen(this);
         gameScreen = new GameScreen(this);
@@ -53,6 +49,8 @@ public class SnakeGame extends Game {
 
         gameClock.reset();
         gameClock.start();
+
+        apple = new Apple();
         setScreen(gameScreen);
 
     }
@@ -60,22 +58,9 @@ public class SnakeGame extends Game {
     @Override
     public void update() {
 
-        if (keyboard.keyDown(KeyEvent.VK_E)) {
-            System.out.println("Key Pressed!!");
-        }
-
-        if (keyboard.keyReleased(KeyEvent.VK_E)) {
-            System.out.println("Key Released!");
-        }
-
-        if (keyboard.keyTyped(KeyEvent.VK_E)) {
-            System.out.println("Key Typed!");
-        }
-
         if (!paused && !gameOver) {
 
             gameClock.tick();
-            //snake.move(gameClock.getDeltaTime());
 
         } else if (gameOver) {
 
@@ -90,9 +75,7 @@ public class SnakeGame extends Game {
 
         gameScreen.clear();
 
-        //gameScreen.render(grid);
-        //gameScreen.render(apple);
-        //gameScreen.render(snake);
+        gameScreen.render(apple);
 
         gameScreen.update();
 
@@ -101,7 +84,6 @@ public class SnakeGame extends Game {
     @Override
     public void onEnd() {
 
-        System.out.println("OnEnd");
         setScreen(endScreen);
 
     }

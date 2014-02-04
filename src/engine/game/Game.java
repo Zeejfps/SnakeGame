@@ -19,6 +19,7 @@ public abstract class Game extends JPanel {
 
     private final int width;
     private final int height;
+    private final int scale;
     private final String title;
 
     private final GameWindow gameWindow;
@@ -32,13 +33,14 @@ public abstract class Game extends JPanel {
     private final ArrayList<Screen> screens = new ArrayList<Screen>();
     private JPanel currentScreen;
 
-    public Game(int width, int height, String title, int fps, int ups) {
+    public Game(int width, int height, int scale, String title, int fps, int ups) {
 
         super(new BorderLayout());
         setBackground(Color.BLACK);
 
         this.width = width;
         this.height = height;
+        this.scale = scale;
         this.title = title;
 
         this.fps = fps;
@@ -87,7 +89,7 @@ public abstract class Game extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(width, height);
+        return new Dimension(width*scale, height*scale);
     }
 
     public abstract void onStart();
@@ -119,12 +121,8 @@ public abstract class Game extends JPanel {
         screenContainer.add(screen, screen.getName());
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
+    public int getScale() {
+        return scale;
     }
 
     public void setUps(int ups) {
