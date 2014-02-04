@@ -1,13 +1,11 @@
 package game;
 
 import engine.util.Clock;
-import engine.game.Game;
+import engine.core.Game;
 import game.objects.Apple;
 import game.screens.EndScreen;
 import game.screens.GameScreen;
 import game.screens.StartScreen;
-
-import java.awt.event.KeyEvent;
 
 /**
  * User: Zeejfps

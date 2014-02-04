@@ -1,4 +1,4 @@
-package engine.game;
+package engine.core;
 
 import engine.util.Clock;
 

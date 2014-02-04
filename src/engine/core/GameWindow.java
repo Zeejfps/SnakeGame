@@ -1,4 +1,4 @@
-package engine.game;
+package engine.core;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;

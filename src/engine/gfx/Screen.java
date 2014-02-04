@@ -1,9 +1,8 @@
 package engine.gfx;
 
-import engine.game.Game;
+import engine.core.Game;
 
 import javax.swing.*;
-import java.awt.event.*;
 
 /**
  * Created by Zeejfps on 2/3/14.

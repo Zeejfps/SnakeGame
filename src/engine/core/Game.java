@@ -1,4 +1,4 @@
-package engine.game;
+package engine.core;
 
 import engine.gfx.Screen;
 import engine.util.Keyboard;
