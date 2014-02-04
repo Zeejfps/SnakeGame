@@ -23,7 +23,7 @@ public class Apple extends Sprite{
 
         try {
 
-            APPLE_IMAGE = new File(SnakeGame.class.getResource("images/apple.png").toURI());
+            APPLE_IMAGE = new File(SnakeGame.class.getResource("images/spritesheet.png").toURI());
 
         } catch (URISyntaxException e) {
             System.err.println("Could not load apple.png!");
@@ -34,7 +34,7 @@ public class Apple extends Sprite{
 
     public Apple() {
 
-        super(10, 10, 0, 0, 25, 25, new SpriteSheet(25, 25, APPLE_IMAGE));
+        super(10, 10, 0, 0, 25, 25, new SpriteSheet(128, 128, APPLE_IMAGE));
 
     }
 

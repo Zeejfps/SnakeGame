@@ -7,20 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c63b1b4b-85a9-4965-a61e-c577ae513393" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/gfx/Bitmap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/gfx/Sprite.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/gfx/SpriteSheet.java" />
-      <change type="DELETED" beforePath="C:\Users\Zeejfps\Programming\Java\SnakeGame\src\game\objects\Grid.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Zeejfps\Programming\Java\SnakeGame\src\game\objects\Renderable.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Zeejfps\Programming\Java\SnakeGame\src\game\objects\snake\Block.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Zeejfps\Programming\Java\SnakeGame\src\game\objects\snake\BodyBlock.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Zeejfps\Programming\Java\SnakeGame\src\game\objects\snake\Direction.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Zeejfps\Programming\Java\SnakeGame\src\game\objects\snake\Snake.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/images/apple.png" afterPath="$PROJECT_DIR$/src/game/images/apple.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/objects/Apple.java" afterPath="$PROJECT_DIR$/src/game/objects/Apple.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/game/Game.java" afterPath="$PROJECT_DIR$/src/engine/game/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/screens/GameScreen.java" afterPath="$PROJECT_DIR$/src/game/screens/GameScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/SnakeGame.java" afterPath="$PROJECT_DIR$/src/game/SnakeGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Snake Game.iws" />
@@ -88,11 +77,8 @@
       <file leaf-file-name="SnakeGame.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/SnakeGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="8" selection-start="1516" selection-end="1516" vertical-scroll-proportion="0.0" vertical-offset="503" max-vertical-offset="1802">
-              <folding>
-                <element signature="e#1654#1655#0" expanded="true" />
-                <element signature="e#1683#1684#0" expanded="true" />
-              </folding>
+            <state line="52" column="0" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="1921">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,16 +86,25 @@
       <file leaf-file-name="StartScreen.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/screens/StartScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="20" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="319" max-vertical-offset="2635">
+            <state line="22" column="20" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="3094">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameScreen.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GameScreen.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/screens/GameScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="103" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.3830703" vertical-offset="379" max-vertical-offset="2329">
+            <state line="65" column="37" selection-start="1641" selection-end="1641" vertical-scroll-proportion="0.0" vertical-offset="1105" max-vertical-offset="1819">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Apple.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game/objects/Apple.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="30" selection-start="815" selection-end="815" vertical-scroll-proportion="0.42337164" vertical-offset="0" max-vertical-offset="1044">
               <folding />
             </state>
           </provider>
@@ -118,7 +113,7 @@
       <file leaf-file-name="EndScreen.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/screens/EndScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="20" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+            <state line="17" column="20" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="527">
               <folding />
             </state>
           </provider>
@@ -184,10 +179,10 @@
         <option value="$PROJECT_DIR$/src/engine/gfx/Bitmap.java" />
         <option value="$PROJECT_DIR$/src/engine/gfx/Sprite.java" />
         <option value="$PROJECT_DIR$/src/engine/gfx/SpriteSheet.java" />
-        <option value="$PROJECT_DIR$/src/game/objects/Apple.java" />
         <option value="$PROJECT_DIR$/src/engine/game/Game.java" />
         <option value="$PROJECT_DIR$/src/game/SnakeGame.java" />
         <option value="$PROJECT_DIR$/src/game/screens/GameScreen.java" />
+        <option value="$PROJECT_DIR$/src/game/objects/Apple.java" />
       </list>
     </option>
   </component>
@@ -292,7 +287,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="screens" />
+              <option name="myItemId" value="objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Snake Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SnakeGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -578,12 +595,16 @@
       <created>1391477136634</created>
       <updated>1391477136634</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updating the Rendering system &#10;">
+      <created>1391480429454</created>
+      <updated>1391480429454</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="1176" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -595,17 +616,17 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32429907" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.249375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32429907" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32429907" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897195" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32429907" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -625,7 +646,8 @@
     <MESSAGE value="Updated Grid, Allowed Apple class to use the Grid" />
     <MESSAGE value="Updated gird to hold an Point[][] instead of int[][]" />
     <MESSAGE value="Some Major Updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some Major Updates" />
+    <MESSAGE value="Updating the Rendering system &#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating the Rendering system &#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -635,6 +657,69 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/game/SnakeGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="0" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1921">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/screens/StartScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="20" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="3094">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/screens/GameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="37" selection-start="1641" selection-end="1641" vertical-scroll-proportion="0.0" vertical-offset="1105" max-vertical-offset="1819">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/objects/Apple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="30" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/screens/EndScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="20" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/SnakeGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="8" selection-start="1516" selection-end="1516" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1921">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/screens/StartScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="20" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="3094">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/screens/GameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="72" selection-start="1791" selection-end="1791" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/screens/EndScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="20" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Launcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="18" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="442" />
@@ -759,35 +844,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/util/Mouse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="639" selection-end="639" vertical-scroll-proportion="0.61877394" vertical-offset="0" max-vertical-offset="1044">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="38" column="0" selection-start="639" selection-end="639" vertical-scroll-proportion="0.61877394" vertical-offset="0" max-vertical-offset="1044" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../GameDev/src/engine2d/util/Input.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.3908046" vertical-offset="408" max-vertical-offset="1581">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.3908046" vertical-offset="408" max-vertical-offset="1581" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/util/Keyboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="16" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.79789275" vertical-offset="0" max-vertical-offset="1666">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#429#439#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/objects/Apple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="71" selection-start="850" selection-end="850" vertical-scroll-proportion="0.42337164" vertical-offset="0" max-vertical-offset="1044">
-          <folding />
-        </state>
+        <state line="49" column="16" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.79789275" vertical-offset="0" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/game/GameLoop.java">
@@ -799,50 +866,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/gfx/Bitmap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="5" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <folding />
-        </state>
+        <state line="26" column="5" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/gfx/Screen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="27" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="14" column="27" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/gfx/SpriteSheet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="5" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="5" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/gfx/Sprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="17" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
+        <state line="34" column="17" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/game/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="10" selection-start="773" selection-end="779" vertical-scroll-proportion="0.58162266" vertical-offset="0" max-vertical-offset="1023">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/SnakeGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="8" selection-start="1516" selection-end="1516" vertical-scroll-proportion="0.0" vertical-offset="503" max-vertical-offset="1802">
-          <folding>
-            <element signature="e#1654#1655#0" expanded="true" />
-            <element signature="e#1683#1684#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,7 +922,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/screens/GameScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="103" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.3830703" vertical-offset="379" max-vertical-offset="2329">
+        <state line="65" column="37" selection-start="1641" selection-end="1641" vertical-scroll-proportion="0.0" vertical-offset="401" max-vertical-offset="1683">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/SnakeGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="0" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.0" vertical-offset="533" max-vertical-offset="1768">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/objects/Apple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="30" selection-start="815" selection-end="815" vertical-scroll-proportion="0.42337164" vertical-offset="0" max-vertical-offset="1044">
           <folding />
         </state>
       </provider>
