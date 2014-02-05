@@ -2,7 +2,6 @@ package game;
 
 import engine.util.Clock;
 import engine.core.Game;
-import game.objects.Apple;
 import game.screens.EndScreen;
 import game.screens.GameScreen;
 import game.screens.StartScreen;
@@ -22,8 +21,6 @@ public class SnakeGame extends Game {
     private final StartScreen startScreen;
     private final GameScreen gameScreen;
     private final EndScreen endScreen;
-
-    private Apple apple;
 
     private boolean gameOver = false;
     private boolean paused = false;
@@ -48,7 +45,6 @@ public class SnakeGame extends Game {
         gameClock.reset();
         gameClock.start();
 
-        apple = new Apple();
         setScreen(gameScreen);
 
     }
@@ -72,8 +68,6 @@ public class SnakeGame extends Game {
     public void render() {
 
         gameScreen.clear();
-
-        gameScreen.render(apple);
 
         gameScreen.update();
 
