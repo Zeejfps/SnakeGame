@@ -151,7 +151,7 @@ public class StartScreen extends Screen {
             setName("HelpMenu");
             setFocusable(true);
             try {
-                helpMenuImage = ImageIO.read(SnakeGame.class.getResource("images/helpMenu.png"));
+                helpMenuImage = ImageIO.read(SnakeGame.class.getResource("res/images/helpMenu.png"));
             } catch (IOException e) {
                 System.err.println("Could not load helpMenu.png!");
                 System.exit(1);

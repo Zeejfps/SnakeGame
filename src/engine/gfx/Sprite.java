@@ -11,7 +11,7 @@ public class Sprite extends Bitmap {
         super(width, height);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                pixels[i*width + j] = spriteSheet.pixels[i*spriteSheet.getWidth() + j];
+                pixels[i*width + j] = spriteSheet.pixels[(i+yOffset)*spriteSheet.getWidth() + j + xOffset];
             }
         }
 

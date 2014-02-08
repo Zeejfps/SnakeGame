@@ -9,14 +9,8 @@ import java.io.IOException;
  * Created by Zeejfps on 2/3/14.
  */
 public class SpriteSheet extends Bitmap {
-    public SpriteSheet(int width, int height, File image) {
-        super(width, height);
-        try {
-            BufferedImage sheet = ImageIO.read(image);
-            pixels = sheet.getRGB(0, 0, width, height, null, 0, width);
-        } catch (IOException e) {
-            System.err.println("Could not load SpriteSheet!");
-            System.exit(1);
-        }
+    public SpriteSheet(BufferedImage image) {
+        super(image.getWidth(), image.getHeight());
+        pixels = image.getRGB(0, 0, image.getWidth(), image.getHeight(), null, 0, image.getWidth());
     }
 }

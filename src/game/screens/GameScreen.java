@@ -59,17 +59,22 @@ public class GameScreen extends Screen {
 
         for (int i = 0; i < bitmap.getHeight(); i++) {
 
-            int yPix = (i+yOffset)*buffer.getWidth();
+            int yPix = (i+yOffset);
+            if(yPix < 0 || yPix > buffer.getHeight()) continue;
 
-            for (int j = 0; j < bitmap.getHeight(); j++) {
+            for (int j = 0; j < bitmap.getWidth(); j++) {
 
                 int xPix = j+xOffset;
+                if(xPix < 0 || xPix > buffer.getWidth()) continue;
 
+                /*
                 if ((bitmap.pixels[i*bitmap.getWidth() + j] == 0xffff00ff)){
                     continue;
-                }
+                }*/
 
-                pixelData[yPix + xPix] = bitmap.pixels[i*bitmap.getWidth() + j];
+                int src = bitmap.pixels[i*bitmap.getWidth() + j];
+                if (src > 0)
+                    pixelData[yPix*buffer.getWidth() + xPix] = src;
 
             }
 

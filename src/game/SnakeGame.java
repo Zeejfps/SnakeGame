@@ -1,10 +1,16 @@
 package game;
 
+import engine.gfx.Bitmap;
+import engine.gfx.SpriteSheet;
 import engine.util.Clock;
 import engine.core.Game;
 import game.screens.EndScreen;
 import game.screens.GameScreen;
 import game.screens.StartScreen;
+
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.util.Random;
 
 /**
  * User: Zeejfps
@@ -14,9 +20,9 @@ import game.screens.StartScreen;
 public class SnakeGame extends Game {
 
     public static final String TITLE = "Snake Game v1.0";
-    public static final int WIDTH = 320;
-    public static final int HEIGHT = 240;
-    public static final int SCALE = 2;
+    public static final int WIDTH = 160;
+    public static final int HEIGHT = 120;
+    public static final int SCALE = 4;
 
     private final StartScreen startScreen;
     private final GameScreen gameScreen;
@@ -47,6 +53,10 @@ public class SnakeGame extends Game {
 
         setScreen(gameScreen);
 
+        for (int i = 0; i < test.pixels.length; i++) {
+            test.pixels[i] = rand.nextInt() * rand.nextInt(2) / 4;
+        }
+
     }
 
     @Override
@@ -64,10 +74,18 @@ public class SnakeGame extends Game {
 
     }
 
+    Random rand = new Random();
+    Bitmap test = new Bitmap(64, 64);
+
     @Override
     public void render() {
 
-        gameScreen.clear();
+        //gameScreen.clear();
+
+        int dx = (int)(Math.sin(System.currentTimeMillis()%2000/2000.0 * Math.PI*2)*100);
+        int dy = (int)(Math.cos(System.currentTimeMillis()%2000/2000.0 * Math.PI*2)*60);
+
+        gameScreen.render(test, 80-32-dx, 60-32-dy);
 
         gameScreen.update();
 
