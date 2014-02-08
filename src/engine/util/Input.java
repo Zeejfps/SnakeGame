@@ -2,12 +2,14 @@ package engine.util;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 /**
  * Created by Zeejfps on 2/3/14.
  */
-public class Keyboard implements KeyListener {
+public class Input implements KeyListener, MouseMotionListener {
 
     private boolean[] keysDown = new boolean[256];
     private boolean[] keysReleased = new boolean[256];
@@ -89,4 +91,13 @@ public class Keyboard implements KeyListener {
 
     }
 
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
 }

@@ -18,6 +18,32 @@ public class Bitmap {
         this.pixels = new int[width*height];
     }
 
+    public void render(Bitmap bitmap, int xOffset, int yOffset) {
+
+        int yPixPos, xPixPos;
+        int src;
+
+        for (int y = 0; y < bitmap.getHeight(); y ++) {
+
+            yPixPos = y + yOffset;
+            if (yPixPos < 0 || yPixPos > width) continue;
+
+            for (int x = 0; x < bitmap.getWidth(); x++) {
+
+                xPixPos = x + xOffset;
+                if (xPixPos < 0 || xPixPos > width) continue;
+
+                src = bitmap.pixels[y*bitmap.getWidth() + x];
+                if (src > 0) {
+                    pixels[yPixPos * width + xPixPos] = src;
+                }
+
+            }
+
+        }
+
+    }
+
     public int getWidth() {
         return width;
     }

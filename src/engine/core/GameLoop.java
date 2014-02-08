@@ -62,7 +62,7 @@ public class GameLoop implements Runnable {
             skippedFrames = 0;
             while (runTime >= nsPerTick && skippedFrames <= maxSkippedFrames) {
 
-                game.keyboard.poll();
+                game.input.poll();
                 game.update();
                 runTime -= nsPerTick;
                 skippedFrames ++;

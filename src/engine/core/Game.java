@@ -1,8 +1,6 @@
 package engine.core;
 
-import engine.gfx.Screen;
-import engine.util.Keyboard;
-import engine.util.Mouse;
+import engine.util.Input;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +11,7 @@ import java.util.ArrayList;
  * Date: 1/25/14
  * Time: 9:03 PM
  */
-public abstract class Game extends JPanel {
+public abstract class Game {
 
     private volatile boolean running = false;
 
@@ -22,21 +20,12 @@ public abstract class Game extends JPanel {
     private final int scale;
     private final String title;
 
-    private final GameWindow gameWindow;
     private final GameLoop gameLoop;
 
     protected int fps, ups;
-    protected Keyboard keyboard;
-    protected Mouse mouse;
-
-    private final JPanel screenContainer = new JPanel(new CardLayout());
-    private final ArrayList<Screen> screens = new ArrayList<Screen>();
-    private JPanel currentScreen;
+    protected Input input;
 
     public Game(int width, int height, int scale, String title, int fps, int ups) {
-
-        super(new BorderLayout());
-        setBackground(Color.BLACK);
 
         this.width = width;
         this.height = height;
@@ -46,16 +35,12 @@ public abstract class Game extends JPanel {
         this.fps = fps;
         this.ups = ups;
 
-        this.keyboard = new Keyboard();
-        this.mouse = new Mouse();
+        this.input = new Input();
 
         gameLoop = new GameLoop(this);
-        add(screenContainer, BorderLayout.CENTER);
-
-        gameWindow = new GameWindow(this);
     }
 
-    public void start() {
+    public synchronized void start() {
 
         if (!running) {
 
@@ -67,7 +52,7 @@ public abstract class Game extends JPanel {
 
     }
 
-    public void stop() {
+    public synchronized void stop() {
 
         if (running) {
 
@@ -87,11 +72,6 @@ public abstract class Game extends JPanel {
         return title;
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(width*scale, height*scale);
-    }
-
     public abstract void onStart();
 
     public abstract void update();
@@ -99,27 +79,6 @@ public abstract class Game extends JPanel {
     public abstract void render();
 
     public abstract void onEnd();
-
-    public void setScreen(Screen screen) {
-
-        if (!screens.contains(screen)) {
-            System.err.println("This screen was not added!");
-            System.exit(1);
-        }
-
-        currentScreen = screen;
-        currentScreen.addKeyListener(keyboard);
-        currentScreen.addMouseListener(mouse);
-        currentScreen.addMouseMotionListener(mouse);
-        ((CardLayout)screenContainer.getLayout()).show(screenContainer, currentScreen.getName());
-        currentScreen.requestFocusInWindow();
-
-    }
-
-    public void addScreen(Screen screen) {
-        screens.add(screen);
-        screenContainer.add(screen, screen.getName());
-    }
 
     public int getScale() {
         return scale;
